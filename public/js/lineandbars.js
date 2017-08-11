@@ -1,6 +1,8 @@
 ﻿// LINE AND BARS CHARTS
 $(document).ready(function() {
-	var result_x, result_temp, result_hum, initial_temp, initial_hum, initial_json;
+	var result_x, result_temp, result_hum;
+	var initial_temp = new Array();
+	var initial_hum = new Array();
 	Highcharts.setOptions({
         global: {
             useUTC: false
@@ -10,27 +12,35 @@ $(document).ready(function() {
 	$.ajax({ 
 		url:"http://35.185.138.8:3000/initial/",
 		type:"POST",
-		data: {id : 'ej'},
 		dataType: "json",
+		async: false,
 		success: function(result) {
 			if (result) { 
-				console.log(result);
-				/*for (var i =0;i<7;i++){
-					var result_time = "01/01/2000 " + (result[i])['hour'] +':'+(result[i])['min'] + ':00';
+				var result_str = JSON.stringify(result);
+				console.log(result_str);
+				var result_final = JSON.parse(result_str);
+				for (var i =0;i<7;i++){
+					var result_elem = result_final[i];
+					var result_time = "01/01/2000 " + result_elem['hour'] +':'+result_elem['min'] + ':00';
 					var temp_time = Date.parse(result_time);
 					result_x = (new Date(temp_time)).getTime();
-					result_temp = parseInt((result[i])['temp'],10);
-					result_hum = parseInt((result[i])['hum'],10);
+					result_temp = parseInt(result_elem['temp'],10);
+					result_hum = parseInt(result_elem['hum'],10);
 					initial_temp.push({
 						x: result_x,
 						y: result_temp
 					});
-					initial_temp.push({
+					initial_hum.push({
 						x: result_x,
 						y: result_hum
-					});	
-				}*/
+					});
+					console.log("success");
+				}
 			} 
+		},
+		error: function (result) {
+			//alert('error: ' + ress);
+			console.log('err: '+result);
 		}
 	});
     var chart = new Highcharts.Chart({
@@ -43,7 +53,7 @@ $(document).ready(function() {
         marginRight: 50,
         marginBottom: 45,
         marginTop: 45,
-        events: {
+        /*events: {
             load: function () {
                 // set up the updating of the chart each second
                 var serie1 = this.series[0];
@@ -53,11 +63,9 @@ $(document).ready(function() {
 					$.ajax({ 
 						url:"http://35.185.138.8:3000/dht/",
 						type:"POST",
-						data: {id : 'ej'},
 						dataType: "json",
 						success: function(result) {
 							if (result) { 
-							
 								var result_time = "01/01/2000 " + result['hour'] +':'+result['min'] + ':00';
 								var temp_time = Date.parse(result_time);
 								result_x = (new Date(temp_time)).getTime();
@@ -65,12 +73,13 @@ $(document).ready(function() {
 								result_hum = parseInt(result['hum'],10);
 							} 
 						}
+						
 					});
 					serie1.addPoint([result_x, result_temp], true, true);
 					serie2.addPoint([result_x, result_hum], true, true);
 				}, 5000);
 			}
-		}   
+		}*/   
       },
       title: {
         text: null,

@@ -28,7 +28,7 @@ var pool = mysql.createPool({
 
 var resultObject = {};
 var result;
-
+var resultJson;
 // routing
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -63,16 +63,17 @@ app.post('/initial/',function(req,res) {
 		connection.query(selectDML, placeHolers, function(err, rows) {
 			if (err) {
 				return console.log("SELECT error %s \n%s", err.message, err.stack);
-			} else {
-				result = rows;
-				//console.log(result);
+			} else {				
+				var strJson = JSON.stringify(rows);
+				resultJson = JSON.parse(strJson);
+				//console.log(resultJson);
 			}
 			connection.release();
 		});
 		
 	});
-	res.json(result);
-	console.log(result);
+	res.json(resultJson);
+	console.log(resultJson);
 });
 
 
