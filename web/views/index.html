@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DashBoard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="eunji">
+
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		
+		<!-- CSS -->
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/font-style.css" rel="stylesheet">
+		<link href="css/flexslider.css" rel="stylesheet">
+
+		<!-- GRAPH JAVASCRIPT -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>    
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/lineandbars.js"></script> <!-- GRAPH -->
+		
+		<!-- You can add more layouts if you want -->
+
+		  
+		<style type="text/css">
+		  body {
+			padding-top: 60px;
+		  }
+		</style>
+		<!-- Google Fonts call. Font Used Open Sans & Raleway -->
+		<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	   
+	</head>
+	 
+	<body>
+  
+  	  <!-- NAVIGATION MENU -->
+
+		<div class="navbar-nav navbar-inverse navbar-fixed-top">
+			<div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="index.html"><img src="images/logo30.png" alt=""> BLOCKS Dashboard</a>
+			</div> 
+			  <div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				  <li class="active"><a href="index.html"><i class="icon-home icon-white"></i> Home</a></li>                            
+				  <li><a href="tables.html"><i class="icon-th icon-white"></i> Tables</a></li>
+				  <li><a href="login.html"><i class="icon-lock icon-white"></i> Login</a></li>
+				  <li><a href="user.html"><i class="icon-user icon-white"></i> User</a></li>
+
+				</ul>
+			  </div><!--/.nav-collapse -->
+			</div>
+		</div>
+	  <!-- DASH BOARD -->
+		<div class="container">
+      
+		  <!-- SECOND ROW OF BLOCKS -->     
+			<div class="row">
+			
+			  <!-- ENTER LIST -->
+				<div class="col-sm-3 col-lg-3">
+				  <!-- MAIL BLOCK -->
+					<div class="dash-unit">
+					<dtitle>Enter list</dtitle>
+					<hr>
+						<div class="framemail">
+							<div class="window">
+								<ul class="mail">
+									<li>
+										<i class="read"></i>
+										<img class="avatar" src="images/photo01.jpeg" alt="avatar">
+										<p class="sender">Adam W.</p>
+										<p class="message"><strong>Working</strong> - This is the last...</p>
+										<div class="actions">
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/undo.png" alt="reply"></a>
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/star_fav.png" alt="favourite"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/trash.png" alt="delete"></a>
+										</div>
+									</li>
+									<li>
+										<i class="read"></i>
+										<img class="avatar" src="images/photo02.jpg" alt="avatar">
+										<p class="sender">Dan E.</p>
+										<p class="message"><strong>Hey man!</strong> - You have to taste ...</p>
+										<div class="actions">
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/undo.png" alt="reply"></a>
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/star_fav.png" alt="favourite"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/trash.png" alt="delete"></a>
+										</div>
+									</li>
+									<li>
+										<i class="read"></i>
+										<img class="avatar" src="images/photo03.jpg" alt="avatar">
+										<p class="sender">Leonard N.</p>
+										<p class="message"><strong>New Mac :D</strong> - So happy with ...</p>
+										<div class="actions">
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/undo.png" alt="reply"></a>
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/star_fav.png" alt="favourite"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/trash.png" alt="delete"></a>
+										</div>
+									</li>
+									<li>
+										<i class="read"></i>
+										<img class="avatar" src="images/photo04.jpg" alt="avatar">
+										<p class="sender">Peter B.</p>
+										<p class="message"><strong>Thank you</strong> - Finally I can ...</p>
+										<div class="actions">
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/undo.png" alt="reply"></a>
+											<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/star_fav.png" alt="favourite"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+											<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/trash.png" alt="delete"></a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div><!-- /dash-unit -->
+				</div><!-- /span3 -->
+
+			  <!-- GRAPH CHART - lineandbars.js file -->     
+				<div class="col-sm-3 col-lg-3">
+					<div class="dash-unit">
+					<dtitle>Graph</dtitle>
+					<hr>
+						<div class="section-graph">
+						  <div id="importantchart"></div>
+						  <br>
+						  <div class="graph-info">
+						  </div>
+						</div>
+					</div>
+				</div>
+
+			  <!-- SWITCHES BLOCK -->     
+				<div class="col-sm-3 col-lg-3">
+					<div class="dash-unit">
+						<dtitle>Switches</dtitle>
+						<hr>
+						<div class="info-user">
+							<span aria-hidden="true" class="li_params fs2"></span>
+						</div>
+						<br>
+						<div class="switch">
+							<input type="radio" class="switch-input" name="view" value="on" id="on" checked="">
+							<label for="on" class="switch-label switch-label-off">On</label>
+							<input type="radio" class="switch-input" name="view" value="off" id="off">
+							<label for="off" class="switch-label switch-label-on">Off</label>
+							<span class="switch-selection"></span>
+						</div>
+						<div class="switch switch-blue">
+							<input type="radio" class="switch-input" name="view2" value="week2" id="week2" checked="">
+							<label for="week2" class="switch-label switch-label-off">Week</label>
+							<input type="radio" class="switch-input" name="view2" value="month2" id="month2">
+							<label for="month2" class="switch-label switch-label-on">Month</label>
+							<span class="switch-selection"></span>
+						</div>
+						
+						<div class="switch switch-yellow">
+							<input type="radio" class="switch-input" name="view3" value="yes" id="yes" checked="">
+							<label for="yes" class="switch-label switch-label-off">Yes</label>
+							<input type="radio" class="switch-input" name="view3" value="no" id="no">
+							<label for="no" class="switch-label switch-label-on">No</label>
+							<span class="switch-selection"></span>
+						</div>
+					</div>
+				</div>
+			</div><!--/row -->     
+		</div>
+	</body>
+</html>
