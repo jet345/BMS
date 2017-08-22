@@ -635,9 +635,9 @@ ul#jstwitter li a{
 /********** SWITCH BUTTON **********/
 .switch {
   position: relative;
-  margin: 20px auto;
+  margin: 10px auto;
   height: 26px;
-  width: 120px;
+  width: 35%;
   background: rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
@@ -648,7 +648,7 @@ ul#jstwitter li a{
   position: relative;
   z-index: 2;
   float: left;
-  width: 58px;
+  width: 50%;
   line-height: 26px;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.35);
@@ -687,7 +687,7 @@ ul#jstwitter li a{
   transition: 0.15s ease-out;
 }
 .switch-input:checked + .switch-label-on ~ .switch-selection {
-  left: 60px;
+  left: 48%;
   /* Note: left: 50% doesn't transition in WebKit */
 }
 
@@ -697,7 +697,7 @@ ul#jstwitter li a{
   z-index: 1;
   top: 2px;
   left: 2px;
-  width: 58px;
+  width: 50%;
   height: 22px;
   background: #b2c831;
   border-radius: 3px;
