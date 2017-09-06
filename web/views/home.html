@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet">
+		<link href="css/home.css" rel="stylesheet">
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+	</head>
+	
+	<body>
+		 <a class="navbar-brand" href="/1st_floor">
+			<h1>Building</h1>
+			<h1>Manager</h1>
+		</a>
+	</body>
+<script type="text/javascript">
+		(function($) {
+			$.fn.letterDrop = function() {
+				// Chainability
+				return this.each(function() {
+				  var obj = $(this);
+
+				  var drop = {
+					arr: obj.text().split(""),
+
+					range: {
+					  min: 1,
+					  max: 9
+					},
+
+					styles: function() {
+					  var dropDelays = "\n",
+						  addCSS;
+
+					  for (i = this.range.min; i <= this.range.max; i++) {
+						dropDelays += ".ld" + i + " { animation-delay: 1." + i + "s; }\n";
+					  }
+
+					  addCSS = $("<style>" + dropDelays + "</style>");
+					  $("head").append(addCSS);
+					},
+
+					main: function() {
+					  var dp = 0;
+					  obj.text("");
+
+					  $.each(this.arr, function(index, value) {
+						dp = dp.randomInt(drop.range.min, drop.range.max);
+
+						if (value === " ") value = "&nbsp"; //Add spaces
+
+						obj.append(
+						  '<span class="letterDrop ld' + dp + '">' + value + "</span>"
+						);
+					  });
+					}
+				  };
+
+				  Number.prototype.randomInt = function(min, max) {
+					return Math.floor(Math.random() * (max - min + 1) + min);
+				  };
+
+				  // Create styles
+				  drop.styles();
+
+				  // Initialise
+				  drop.main();
+				});
+			  };
+			})(jQuery);
+
+			// USAGE
+			$("h1").letterDrop();
+	</script>
+</html>

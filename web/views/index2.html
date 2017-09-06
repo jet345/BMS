@@ -10,26 +10,24 @@
 		
 		<!-- CSS -->
 		<link href="css/main.css" rel="stylesheet">
-		<link href="css/font-style.css" rel="stylesheet">
 		<link href="css/flexslider.css" rel="stylesheet">
 
-		<!-- GRAPH JAVASCRIPT -->
+		<!-- JAVASCRIPT -->
 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>    
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/highcharts-more.js"></script>
 		<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-		<script type="text/javascript" src="js/graphs.js"></script>
-		<!--GRAPH -->
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="js/graphs2.js"></script>
+		<script type="text/javascript" src="js/switch_control2.js"></script>
 		
 		<!-- Google Fonts call. Font Used Open Sans & Raleway -->
-		<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	   
 	</head>
 	 
 	<body>
-  
   	  <!-- NAVIGATION MENU -->
 
 		<nav class="navbar navbar-inverse">
@@ -46,8 +44,8 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME</a></li>
-					<li><a href="/">1st FLOOR</a></li>
+					<li><a href="/">HOME</a></li>
+					<li><a href="/1st_floor">1st FLOOR</a></li>
 					<li><a href="/2nd_floor">2nd FLOOR</a></li>
 				</ul>
 			</div>
@@ -56,75 +54,97 @@
 	  <!-- DASH BOARD -->
 		<div class="container">
       
-		  <!-- SECOND ROW OF BLOCKS -->     
+		  <!-- ROW OF BLOCKS -->     
 			<div class="row">
+
+			    <!-- 현재 온도와 습도 -->     
+				<div class="dash-unit horizon_half" style="margin-left:1%; float:left; width: 63%; height:180px;">
+					<dtitle>현재 온습도</dtitle>
+					<hr>
+					<div class="section-dht" style="margin-left:2%; float:left;">
+						<br>
+						<img src="images/temperture.png"></img>
+						<br><br>
+						<h1 id="temperture"></h1>
+						<h2> ℃</h2>
+					</div>
+					<div class="section-dht" style="margin-right:2%; float:right;">
+						<br>
+						<img src="images/humidity.png"></img>
+						<br><br>
+						<h1 id="humidity"></h1>
+						<h2> %</h2>
+					</div>
+				</div>
+				<div class="dash-unit horizon_half" style="margin-left:65%; float=right; width: 33%; height:180px;">
+					<dtitle>현재 조도</dtitle>
+					<hr>
+					<br>
+					<img src="images/light.png"></img>
+					<br>
+					<br>
+					<h1 id="bright"></h1>
+					<h2> lx</h2>
+				</div>
 			
-
-			    <!-- LINE GRAPH CHART - lineandbars.js file -->     
-				<div class="col-sm-3 col-lg-3">
-					<div class="dash-unit">
-					<dtitle>Line Graph</dtitle>
-					<hr>
-						<div class="section-graph">
-						  <div id="linegraph"></div>
-						  <br>
-						</div>
-					</div>
-				</div>
-				
 				<!-- PIE GRAPH CHART - pie.js file -->     
-				<div class="col-sm-3 col-lg-3">
-					<div class="dash-unit">
-					<dtitle>Gauge Graph</dtitle>
-					<hr>
-						<div class="section-graph">
-						  <div id="gaugegraph"></div>
-						  <br>
-						</div>
+				<div class="dash-unit" style="height:200px;">
+				<dtitle>실시간 사용 전력</dtitle>
+				<hr>
+					<div class="section-graph" id="linegraph">
 					</div>
 				</div>
-				
+			
 				<!-- BAR GRAPH CHART - lineandbars.js file -->     
-				<div class="col-sm-3 col-lg-3">
-					<div class="dash-unit">
-					<dtitle>Bar Graph</dtitle>
-					<hr>
-						<div class="section-graph">
-						  <div id="bargraph"></div>
-						  <br>
-						</div>
+				<div class="dash-unit horizon_half" style= "margin-left:1%; float:left;">
+				<dtitle>내달 소비전력량</dtitle>
+				<hr>
+					<div class="section-graph">
+					  <div id="gaugegraph"></div>
+					  <br>
 					</div>
 				</div>
 
-			  <!-- SWITCHES BLOCK -->     
-				<div class="col-sm-3 col-lg-3">
-					<div class="dash-unit">
-						<dtitle>Switches</dtitle>
-						<hr>
-						<br>
-						<br>
-						<div class="air" style="width:auto !important; max-width:100%; height:auto !important; text-align: center;">
-							<img src ="images/air.png" style="display: inline-block; width:auto !important; max-width:15%; height:auto !important; margin:0% 12% 0% 20%;">
-							<img src ="images/light.png" style="display: inline-block; width:auto !important; max-width:15%; height:auto !important; margin:0% 20% 0% 11%;">
-						</div>
-						<br>
-						<br>
-						<div style="max-width:100%">
-							<div class="switch" style="max-width:35%; float:left; margin: 0% 5% 0% 10%;">
-								<input type="radio" class="switch-input" name="view" value="air_on" id="air_on" checked="">
-								<label for="air_on" class="switch-label switch-label-off">On</label>
-								<input type="radio" class="switch-input" name="view" value="air_off" id="air_off">
-								<label for="air_off" class="switch-label switch-label-on">Off</label>
-								<span class="switch-selection"></span>
-							</div>
-							<div class="switch switch-blue" style="max-width:35%; float:right; margin: 0% 10% 0% 5%;">
-								<input type="radio" class="switch-input" name="view2" value="light_on" id="light_on" checked="">
-								<label for="light_on" class="switch-label switch-label-off">On</label>
-								<input type="radio" class="switch-input" name="view2" value="light_off" id="light_off">
-								<label for="light_off" class="switch-label switch-label-on">Off</label>
-								<span class="switch-selection"></span>
-							</div>
-						</div>
+			<!-- SWITCHES_LIGHT BLOCK -->     
+				<div class="dash-half" style="margin-left:51%; float=right;">
+					<dtitle>조명 조도 설정</dtitle>
+					<hr>
+					<div class="light_switch" style="text-align: center; padding-top:8%;">
+						<input type="radio" class="radio_light" name="progress"  id="off">
+						<label for="off" class="label_light" id="off_1">OFF</label>
+						
+						<input type="radio" class="radio_light" name="progress"  id="light1">
+						<label for="light1" class="label_light" id="light_1">1</label>
+
+						<input type="radio" class="radio_light" name="progress"  id="light2">
+						<label for="light2" class="label_light" id="light_2">2</label>
+
+						<input type="radio" class="radio_light" name="progress" id="light3">
+						<label for="light3" class="label_light" id="light_3">3</label>
+					</div>
+				</div>
+				<div class="dash-half" style="margin-left:51%; float=right;">
+					<dtitle>희망온도 설정</dtitle>
+					<hr>
+					<div class="airpower" style="width:30%; height: 30%; float: left; text-align: center; margin-left: 15%; margin-top:10%;">
+							<input type="radio" class="radio_airpower" id="air_power">
+							<label for="air_power" class="label_airpower" id="ap1"></label>
+					</div>
+					<div class="updown" style="float: left; text-align: center;">
+						<button id="upButton" type="button" class="vote">
+							<svg fill="#999999" class="upArrow" id="upArrow" viewBox="0 0 11.5 6.4" xml:space="preserve">
+								<path d="M11.4,5.4L6,0C5.9-0.1,5.8-0.1,5.8-0.1c-0.1,0-0.2,0-0.2,0.1
+								L0.1,5.4C0,5.6,0,5.7,0.1,5.9l0.4,0.4c0.1,0.1,0.3,0.1,0.4,0l4.8-4.8l4.8,4.8c0.1,0.1,0.3,0.1,0.4,0l0.4-0.4
+								C11.5,5.7,11.5,5.6,11.4,5.4z"/>
+							</svg>
+						</button>
+						<h2 id="tempCounter" style="text-align:center;"></h2>
+						<button id="downButton" type="button" class="vote">			
+							<svg fill="#999999" class="downArrow" id="downArrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 11.5 6.4" xml:space="preserve">
+								<path d="M0.1,0.9l5.4,5.4c0.1,0.1,0.1,0.1,0.2,0.1c0.1,0,0.2,0,0.2-0.1
+								l5.4-5.4c0.1-0.1,0.1-0.3,0-0.4L11,0c-0.1-0.1-0.3-0.1-0.4,0L5.8,4.8L0.9,0C0.8-0.1,0.6-0.1,0.5,0L0.1,0.4C0,0.6,0,0.7,0.1,0.9z"/>
+							</svg>
+						</button>
 					</div>
 				</div>
 			</div> <!--/row -->     

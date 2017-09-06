@@ -10,13 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
+    "fcm-node": "^1.2.0",
+    "fs": "0.0.1-security",
     "http": "0.0.0",
     "mysql": "^2.14.1",
     "net": "^1.0.2",
     "path": "^0.12.7",
     "path.join": "^1.0.0",
+    "python-shell": "^0.4.0",
     "socket.io": "^2.0.3"
   }
 }
