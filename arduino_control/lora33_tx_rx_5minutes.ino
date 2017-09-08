@@ -4,7 +4,6 @@
 #include <Wire.h>
 #include <SPI.h>
 
-
 #define DHTPIN 4
 #define DHTTYPE DHT11
 #define LIGHT_LED 9
@@ -56,7 +55,7 @@ void setup() {
   Serial.print(F("Setting Power: state "));
   Serial.println(e, DEC);  
   // Set the node address and print the result
-  e |= sx1272.setNodeAddress(11);
+  e |= sx1272.setNodeAddress(33);
   Serial.print(F("Setting node address: state "));
   Serial.println(e, DEC);  
   // Print a success message
@@ -71,7 +70,8 @@ void setup() {
   //long
   lastSend_r = 0;
 
-  pinMode(LIGHT_LED, OUTPUT);
+  //light
+  pinMode(LIGHT_LED,OUTPUT);
 }
 
 //Funtion of Light Sensor
@@ -102,12 +102,16 @@ void Light_Sensor() {
   if(2==BH1750_Read(BH1750address)) {
     lux = ((buff[0]<<8)|buff[1])/1.2;
     
-    
-      tmp += "11";
+    if(lux>100) {
+      tmp += "*";
+      tmp += "/";  
+    }
+    else{
+      tmp += "33";
       tmp += "/";
       tmp += String(lux);
       tmp += "/";      
-    
+    }
   }
 }
 
@@ -125,37 +129,35 @@ void loop() {
     }
     Serial.print(F("Message: "));
     Serial.println(my_packet);
-    ascii=my_packet[0];
-    if(ascii>=97 && ascii <=100){
-      Serial.println("ascii");
-      switch(ascii){
-          case 97:
-          //a
-          analogWrite(LIGHT_LED, 0);
-          break;
-          case 98:
-          //b
-          analogWrite(LIGHT_LED, 100);
-          break;
-  
-          case 99:
-          //c
-          analogWrite(LIGHT_LED, 180);
-          break;
-  
-          case 100:
-          //d
-          analogWrite(LIGHT_LED, 255);
-          break;
-      }  
-    }
+    ascii = my_packet[0];
+    if(ascii>=101 && ascii<=104){
+        switch(ascii){
+            case 101:
+            //e , OFF
+            analogWrite(LIGHT_LED,0);
+            break;
+            case 102:
+            //f 1단
+            analogWrite(LIGHT_LED,100);
+            break;
 
+            case 103:
+            //g 2단
+            analogWrite(LIGHT_LED,180);
+            break;
+
+            case 104:
+            //h 3단
+            analogWrite(LIGHT_LED,255);
+            break;
+        }
+      }
     
   }
   delay(100);
-  //Serial.print("** mills - lastSend_r : ");
-  //Serial.println(millis()-lastSend_r);
-  if (millis() - lastSend_r > 300000) { //3초간격?
+  Serial.print("** mills - lastSend_r : ");
+  Serial.println(millis()-lastSend_r);
+  if (millis() - lastSend_r > 60000) { //3초간격?
     // Light
     Serial.println("HERE");
     Light_Sensor();
@@ -177,7 +179,7 @@ void loop() {
     Serial.println(message);
     message[0] = '\0';
     lastSend_r=millis();
-   
+    
   }
   delay(100);
 }
