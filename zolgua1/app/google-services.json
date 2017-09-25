@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "137989988864",
+    "firebase_url": "https://bms-test-5c8b2.firebaseio.com",
+    "project_id": "bms-test-5c8b2",
+    "storage_bucket": "bms-test-5c8b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137989988864:android:311a5c4b7350089c",
+        "android_client_info": {
+          "package_name": "com.example.tnqls.zolgua1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137989988864-oeenegt31462ak61oo7373alk0v0etau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuYG2Ald39c3u3Q7NcqrCLiwqETuw-ip8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
